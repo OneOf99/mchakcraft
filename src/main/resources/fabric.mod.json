@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "mchakcraft",
+  "version": "${version}",
+  "name": "MchakCraft",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/mchakcraft/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": [
+      "com.mchak.mchakcraft.client.MchakcraftDataGenerator"
+    ],
+    "client": [
+      "com.mchak.mchakcraft.client.MchakcraftClient"
+    ],
+    "main": [
+      "com.mchak.mchakcraft.Mchakcraft"
+    ]
+  },
+  "mixins": [
+    "mchakcraft.mixins.json",
+    {
+      "config": "mchakcraft.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
