@@ -1,8 +1,11 @@
 package com.mchak.mchakcraft;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
+import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
+import net.minecraft.recipe.display.FurnaceRecipeDisplay;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
@@ -31,5 +34,10 @@ public class ModItems {
 	public static void initialize() {
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS)
 				.register((itemGroup) -> itemGroup.add(ModItems.SUSPICIOUS_SUBSTANCE));
+		CompostingChanceRegistry.INSTANCE.add(ModItems.SUSPICIOUS_SUBSTANCE, 0.3f);
+		FuelRegistryEvents.BUILD.register((builder, context) -> {
+			builder.add(ModItems.SUSPICIOUS_SUBSTANCE, 30 * 20);
+		});
+
 	}
 }
